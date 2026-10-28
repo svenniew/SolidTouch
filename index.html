@@ -1,28 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-  <title>SolidCraft</title>
-  <meta name="description" content="Open-source parametric CAD built in Rust. Desktop, browser, and MCP for AI agents.">
+  <title>SolidTouch</title>
+  <meta name="description" content="SolidTouch: SolidCraft with Inventor handling and touch gestures, in your browser.">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="SolidCraft">
-  <meta property="og:title" content="SolidCraft: try it in your browser">
-  <meta property="og:description" content="Open-source parametric CAD built in Rust. Desktop, browser, and MCP for AI agents.">
-  <meta property="og:url" content="https://solidcraft.ai/">
-  <meta property="og:image" content="https://docs.solidcraft.io/og.png">
-  <meta property="og:image:width" content="1280">
-  <meta property="og:image:height" content="640">
-  <meta property="og:image:alt" content="SolidCraft: open-source parametric CAD built in Rust">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="SolidCraft: try it in your browser">
-  <meta name="twitter:description" content="Open-source parametric CAD built in Rust. Desktop, browser, and MCP for AI agents.">
-  <meta name="twitter:image" content="https://docs.solidcraft.io/og.png">
-  <meta name="twitter:image:alt" content="SolidCraft: open-source parametric CAD built in Rust">
+  <meta property="og:site_name" content="SolidTouch">
+  <meta property="og:title" content="SolidTouch: SolidCraft fork for touch screens">
+  <meta property="og:description" content="SolidTouch: SolidCraft with Inventor handling and touch gestures, in your browser.">
+  <meta property="og:image" content="icons/solidtouch-512.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="SolidTouch: SolidCraft fork for touch screens">
+  <meta name="twitter:description" content="SolidTouch: SolidCraft with Inventor handling and touch gestures, in your browser.">
+  <meta name="twitter:image" content="icons/solidtouch-512.png">
   
 <script type="module">
-import init, * as bindings from './solidcraft-web-ab4fb4ca16b5182f.js';
-const wasm = await init({ module_or_path: './solidcraft-web-ab4fb4ca16b5182f_bg.wasm' });
+import init, * as bindings from './solidcraft-web-b7bc4950bac26a12.js';
+const wasm = await init({ module_or_path: './solidcraft-web-b7bc4950bac26a12_bg.wasm' });
 
 
 window.wasmBindings = bindings;
@@ -35,16 +30,22 @@ dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
   
   <link rel="stylesheet" href="./loading-40e06288284afd2b.css" integrity="sha384-eRJXGzGvBsYK5g+Szve9gR6lF3bDIBsms38kfSjVsxFaaUR1/ST/qGL8PJMXT2yR"/>
   
-  <!-- Installable as an app (manifest.webmanifest); the icons are the Linux exports of the app mark. -->
-  <meta name="theme-color" content="#343840">
+  <!-- Installable as an app (manifest.webmanifest) under the fork's own name and mark (SolidTouch);
+       the loading screen keeps SolidCraft's animated logo, so the fork stays recognisable. -->
+  <meta name="theme-color" content="#1e1e2e">
   <link rel="manifest" href="manifest.webmanifest">
-  <link rel="icon" type="image/png" sizes="32x32" href="icons/32x32/ai.storyteller.solidcraft.png">
-  <link rel="apple-touch-icon" href="icons/256x256/ai.storyteller.solidcraft.png">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/solidtouch-32.png">
+  <link rel="apple-touch-icon" href="icons/solidtouch-180.png">
+  <meta name="apple-mobile-web-app-title" content="SolidTouch">
   
   
   
   
-<link rel="modulepreload" href="./solidcraft-web-ab4fb4ca16b5182f.js" crossorigin="anonymous" integrity="sha384-FKlqWtiNsL7Ark7TlQmLK5YstaTgkV4jAXQ6FdDR6Q5X9sPOfZUsvQ4aEdq9X24k"><link rel="preload" href="./solidcraft-web-ab4fb4ca16b5182f_bg.wasm" crossorigin="anonymous" integrity="sha384-1psaeKaevOgT/nXKY/aXQrQm8sIwfjVKPPEHj7YUur+JhNYjS8MhIEx3UI2wMlIj" as="fetch" type="application/wasm"></head>
+  
+  
+  
+<link rel="modulepreload" href="./solidcraft-web-b7bc4950bac26a12.js" crossorigin="anonymous" integrity="sha384-1zvYYOe0vnW8uRxZEKNEHnGE3oRcVrodBW8gOw+FAOjqgXzNvy8CZwp3d56bIziV"><link rel="preload" href="./solidcraft-web-b7bc4950bac26a12_bg.wasm" crossorigin="anonymous" integrity="sha384-3sAlbVHSbwCAiChco8aykKXcg9G7NgT4/viZv9lSVFVBcUPRHLQ4zM9ymEinpXml" as="fetch" type="application/wasm"></head>
 <body>
   <canvas id="solidcraft_canvas"></canvas>
   <div id="solidcraft_loading" role="status"><img src="loading-logo.svg" alt=""><span class="sr-only">Loading SolidCraft&hellip;</span></div>
