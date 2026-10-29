@@ -1,0 +1,24 @@
+    html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #e8ebf0; }
+    #solidcraft_canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+    #solidcraft_loading { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      color: #4a5060; font: 14px system-ui, sans-serif; background: #e8ebf0; z-index: 10; transition: opacity 300ms ease; }
+    #solidcraft_loading.done { opacity: 0; pointer-events: none; }
+    /* The app draws nothing the browser has to composite while the loading screen covers it. */
+    body:has(#solidcraft_loading:not(.done)) #solidcraft_canvas { visibility: hidden; }
+    /* SolidTouch's voxel mark: each cube its own layer, moved and faded by the compositor only, so
+       it stays smooth while the app loads on the main thread. */
+    .st-voxel { position: relative; width: min(55vmin, 320px); aspect-ratio: 1;
+      --top: #b8a5fe; --left: #7b5bf3; --right: #5638c6; --line: #22184f; }
+    .st-voxel .v { position: absolute; will-change: transform, opacity;
+      animation-duration: 4.8s; animation-timing-function: cubic-bezier(.3,1.25,.55,1);
+      animation-iteration-count: infinite; animation-fill-mode: backwards; }
+    .st-voxel svg { display: block; width: 100%; height: 100%; }
+    .st-voxel .s { fill: none; stroke: var(--line); stroke-width: 6; stroke-linejoin: round; stroke-linecap: round; }
+    .st-voxel .t { fill: none; stroke: var(--line); stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+    .st-voxel .d { fill: none; stroke: var(--line); stroke-width: 1.6; stroke-dasharray: 5 5; opacity: .7; }
+    /* Each cube drops in, holds while the whole mark stands and lifts away in the same order; its
+       keyframes (st-v0 … in index.html) measure the drop in its own small layer's height. */
+    @media (prefers-reduced-motion: reduce) { .st-voxel .v { animation: none; } }
+    #solidcraft_loading .st-name { margin-top: 18px; color: #3b2a8f; font: 700 clamp(40px, 11vmin, 64px) system-ui, sans-serif; letter-spacing: .02em; }
+    #solidcraft_loading .st-base { margin-top: 6px; color: #4a5060; font: 500 clamp(18px, 4.6vmin, 24px) system-ui, sans-serif; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
