@@ -1,0 +1,2 @@
+# The build is published byte for byte: its pages check their files (integrity, SHA-256).
+* -text
